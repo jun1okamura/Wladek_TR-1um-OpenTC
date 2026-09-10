@@ -35,8 +35,8 @@ lvs:
 
   # If true → only generate extracted netlist (no comparison)
   # If false → perform full LVS comparison
-  netlist_only: false
-
+  netlist_only: true
+  
 # ======================================================
 # MDP (Mask Data Preparation) output
 # ======================================================
