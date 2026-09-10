@@ -8,7 +8,7 @@
 # Project metadata (used for documentation / review)
 # ======================================================
 project:
-  title: ""        # Project title (e.g. "Simple CPU", "PLL", "ADC")
+  title: "TEST"        # Project title (e.g. "Simple CPU", "PLL", "ADC")
   author: ""       # Your name
   discord: ""      # Optional: Discord username (for support / communication)
   description: ""  # Short one-line description
