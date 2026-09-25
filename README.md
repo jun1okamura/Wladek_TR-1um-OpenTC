@@ -60,7 +60,7 @@ Each block contains four transistors of the same type. All eight blocks use the 
 |---|---|---|---|---|---|---|
 | **WG1** | NMOS | 3.4 / 1 | 3.4 / 2 | 3.4 / 4 | 50 / 30 | Short-channel effects at minimum width, plus a large long-channel reference device |
 | **WG2** | PMOS | 3.4 / 1 | 3.4 / 2 | 3.4 / 4 | 50 / 30 | PMOS version of WG1 |
-| **WG3** | NMOS | 30 / 1 | 30 / 2 | 30 / 4 | 30 / 5 | Short-L dependence with wide devices: Vth roll-off, DIBL, Idsat |
+| **WG3** | NMOS | 30 / 1 | 30 / 2 | 30 / 3 | 30 / 5 | Short-L dependence with wide devices: Vth roll-off, DIBL, Idsat |
 | **WG4** | PMOS | 30 / 1 | 30 / 2 | 30 / 3 | 30 / 5 | PMOS version of WG3 |
 | **WG5** | NMOS | 30 / 7 | 30 / 10 | 30 / 20 | 30 / 30 | Long-L dependence: long-channel Vth, mobility, ΔL extraction |
 | **WG6** | PMOS | 30 / 7 | 30 / 10 | 30 / 20 | 30 / 30 | PMOS version of WG5 |
@@ -94,12 +94,12 @@ Each block contains four transistors of the same type. All eight blocks use the 
 | P2 | IN (enable) |
 | P4 | GND |
 | P16 | VDD |
-| P10 | OUT (buffered by the last inverter) |
+| P10 | OUT (buffered by the last two inverters) |
 | Other pads | Not used |
 
-- The NAND2 enables the ring. Its first input is IN (P2); its second input is the feedback node `loop`, taken from the output of the 29th inverter.
-- The 30th inverter only buffers `loop` to OUT, so it does not load the ring.
-- Operation: set IN = VDD to enable the ring and measure the frequency *f* at OUT. With *N* inverting stages in the loop, the delay per stage is t<sub>pd</sub> = 1 / (2 · *N* · *f*).
+- The ring has **29 inverting stages**: the NAND2 plus 28 inverters. One NAND2 input is IN (P2); the other is the feedback node `loop`, taken from the output of the 28th inverter.
+- The 29th and 30th inverters form a two-stage output buffer from `loop` to OUT, which isolates the ring from the probe load.
+- Operation: set IN = VDD to enable the ring (IN = GND stops it) and measure the frequency *f* at OUT. The delay per stage is t<sub>pd</sub> = 1 / (2 · 29 · *f*).
 
 ---
 
